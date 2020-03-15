@@ -1,0 +1,16 @@
+{
+  "name": "videovuejs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "watch:sass": "node-sass ./src/sass/main.scss ./src/css/styles.css -w",
+    "watch:json": "json-server --watch ./db.json"
+  },
+  "author": "Steven Coaila <scoailazaa@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "json-server": "^0.16.1",
+    "node-sass": "^4.13.1"
+  }
+}
