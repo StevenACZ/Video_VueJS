@@ -1,0 +1,43 @@
+/////////////////////////////////////////////////////////////
+//--(MODAL ELIMINATE VIDEO)-------------------------------//
+///////////////////////////////////////////////////////////
+.modal-eliminate-video {
+  border: 1px solid rgba(0,0,0,.5);
+  padding: 2rem;
+
+  background-color: white;
+
+  position: absolute;
+  top: -50vh;
+
+  transition: all .5s;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(0,0,0,.5);
+    padding-bottom: 1rem;
+  }
+
+  &__title {
+    font-size: 2.2rem;
+  }
+
+  &__close {
+    cursor: pointer;
+  }
+
+  &__message {
+    margin: 5rem;
+  }
+
+  &__options {
+    display: flex;
+  }
+
+  &.active {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}

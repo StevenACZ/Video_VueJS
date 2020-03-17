@@ -5,13 +5,17 @@
   width: 100%;
   border: none;
   padding: 2rem;
-  background-color: var(--clr-primary);
+  background-color: rgba(0, 0, 0, .8);
   font-size: 1.8rem;
   transition: all .5s ease;
   color: white;
   font-weight: bold;
   cursor: pointer;
   
+  &--primary {
+    background-color: var(--clr-primary);
+  }
+
   &--secondary {
     background-color: var(--clr-secondary);
     color: black;
