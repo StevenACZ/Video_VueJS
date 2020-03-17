@@ -1,0 +1,16 @@
+{
+  "videos": [
+    {
+      "id": 1,
+      "title": "Hola soy un video",
+      "url_video": "Hola soy un video",
+      "description": "Hola soy un video"
+    },
+    {
+      "id": 2,
+      "title": "Hola soy otro video 2",
+      "url_video": "Hola soy otro video 2",
+      "description": "Hola soy otro video 2"
+    }
+  ]
+}
