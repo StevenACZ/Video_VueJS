@@ -2,12 +2,14 @@
 //--(MODAL ELIMINATE VIDEO)-------------------------------//
 ///////////////////////////////////////////////////////////
 .modal-eliminate-video {
+  z-index: 1000000;
+
   border: 1px solid rgba(0,0,0,.5);
   padding: 2rem;
 
   background-color: white;
 
-  position: absolute;
+  position: fixed;
   top: -50vh;
 
   transition: all .5s;
