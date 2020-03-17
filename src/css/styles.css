@@ -123,9 +123,35 @@ body {
   margin-left: 1rem;
   margin-right: 1rem;
   margin-bottom: 2rem; }
+  .card-video__preview-container {
+    width: 100%;
+    height: 19rem;
+    border: none;
+    position: relative; }
+  .card-video__edit {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background-color: #C4C4C4;
+    padding: .5rem .7rem;
+    border: none;
+    cursor: pointer;
+    color: white;
+    border-radius: 3px; }
+  .card-video__delete {
+    position: absolute;
+    top: 8px;
+    right: 6px;
+    background-color: #C4C4C4;
+    padding: .5rem .8rem;
+    border: none;
+    cursor: pointer;
+    color: white;
+    border-radius: 3px; }
   .card-video__preview {
     width: 100%;
-    border: none; }
+    height: 100%;
+    object-fit: cover; }
   .card-video__container-detail {
     padding: 1rem; }
     .card-video__container-detail > button {

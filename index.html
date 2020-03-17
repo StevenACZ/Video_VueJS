@@ -10,6 +10,8 @@
 
   <!--Roboto Font Family-->
   <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+
+  <script src="https://kit.fontawesome.com/6376c03a82.js" crossorigin="anonymous"></script>
 </head>
 <body>
   
@@ -20,7 +22,7 @@
 
   <main class="main">
 
-    <section class="modal-eliminate-video" id="js_modalEliminateVideo">
+    <!--<section class="modal-eliminate-video" id="js_modalEliminateVideo">
       <div class="modal-eliminate-video__header">
         <h2 class="modal-eliminate-video__title">Eliminar video</h2>
         <span class="modal-eliminate-video__close">X</span>
@@ -33,22 +35,24 @@
           <button class="btn btn--secondary">Cancelar</button>
         </div>
       </div>
-    </section>
+    </section>-->
 
 
 
 
 
 
-    <!--<section class="list-videos">
+    <section class="list-videos">
       <h2 class="list-videos__title">Lista de videos</h2>
 
       <div class="list-videos__videos">
         <article class="card-video">
 
-          <video class="card-video__preview">
-            <source src="https://www.youtube.com/watch?v=hs8uQwIsoM4" type="video/mp4">
-          </video>
+          <figure class="card-video__preview-container">
+            <button class="card-video__edit" id="js_editVideo"><i class="fas fa-pencil-alt"></i></button>
+            <button class="card-video__delete" id="js_deleteVideo"><i class="fas fa-times"></i></button>
+            <img class="card-video__preview" src="https://picsum.photos/200/300" alt="Img">
+          </figure>
 
           <div class="card-video__container-detail">
             <h3 class="card-video__sub-title">Tecnicas de programación</h3>
@@ -63,7 +67,7 @@
         </article>
 
       </div>
-    </section>-->
+    </section>
 
     <!--<section class="add-video">
       <h2 class="add-video__title">Agregar video</h2>
