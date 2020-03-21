@@ -1,5 +1,50 @@
+/*const videoList = document.getElementById('js_video_list');
+
+const addVideoButton = document.getElementById('js_btnAddVideoButton')
+const addVideoForm = document.getElementById('js_addVideoForm')
+
+addVideoForm.style.display = 'none';
+
+addVideoButton.addEventListener('click', function() {
+  videoList.style.display = 'none';
+  addVideoForm.style.display = 'block';
+
+  addVideoClose = document.getElementById('js_btnCancelVideo')
+
+  addVideoForm.addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const title = addVideoForm.querySelector(".title")
+    const url_video = addVideoForm.querySelector('.url-video')
+    const description = addVideoForm.querySelector('.description')
+
+    console.log(title.value)
+    console.log(url_video.value)
+    console.log(description.value)
+
+    addVideoForm.style.display = 'none';
+    videoList.style.display = 'block';
+  });
+
+  addVideoClose.addEventListener('click', function() {
+    addVideoForm.style.display = 'none';
+    videoList.style.display = 'block';
+  });
+});*/
+
+
+
+
+
+
+/*const addVideoForm = document.getElementById("js_addVideoForm");
+const title = addVideoForm.querySelector(".title")
+const url_video = addVideoForm.querySelector('.url-video')
+const description = addVideoForm.querySelector('.description')*/
+
+
 // OBTENER DATOS DEL API
-fetch('http://localhost:3000/videos')
+/*fetch('http://localhost:3000/videos')
 .then(function(response) {
   return response.json();
 }).then(function(videos){
@@ -38,4 +83,4 @@ function createCard(video) {
 function insertCard(card) {
   const container = document.getElementById('videos');
   container.appendChild(card);
-}
+}*/

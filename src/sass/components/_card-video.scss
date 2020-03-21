@@ -29,6 +29,12 @@
     cursor: pointer;
     color: white;
     border-radius: 3px;
+
+    transition: all .5s;
+
+    &:hover {
+      box-shadow: 0px 0px 8px rgba(146, 146, 146, 0.53);
+    }
   }
 
   &__delete {
@@ -43,6 +49,12 @@
     color: white;
 
     border-radius: 3px;
+
+    transition: all .5s;
+
+    &:hover {
+      box-shadow: 0px 0px 8px rgba(146, 146, 146, 0.53);
+    }
   }
 
   &__preview {
