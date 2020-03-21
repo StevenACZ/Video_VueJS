@@ -1,13 +1,19 @@
+// videos's container
 const videoListSection = document.getElementById('js_video_list');
 videoListSection.classList.add('active');
 
+drawCard(); // Check if there are videos
+
+// section where we going to add videos
 const addVideoSection = document.getElementById('js_addVideoForm')
+
+// button that the opens section where we going to add videos
 const openAddVideoSection = document.getElementById('js_btnAddVideoButton')
 
 
 openAddVideoSection.addEventListener('click', function() {
-  videoListSection.classList.remove('active'); // VideoListSection se oculta
-  addVideoSection.classList.add('active') // addVideoSection se dibuja
+  videoListSection.classList.remove('active'); // VideoListSection hides
+  addVideoSection.classList.add('active') // addVideoSection is drawn
 
   addVideoClose = document.getElementById('js_btnCancelVideo')
 
@@ -29,6 +35,8 @@ openAddVideoSection.addEventListener('click', function() {
   addVideoClose.addEventListener('click', function() {
     addVideoSection.classList.remove('active')
     videoListSection.classList.add('active');
+
+    drawCard();
   });
 });
 
@@ -43,15 +51,23 @@ const url_video = addVideoForm.querySelector('.url-video')
 const description = addVideoForm.querySelector('.description')*/
 
 
-// OBTENER DATOS DEL API
-/*fetch('http://localhost:3000/videos')
-.then(function(response) {
-  return response.json();
-}).then(function(videos){
-  videos.forEach(video => {
-    insertCard(createCard(video))
+// OBTENER DATOS DEL API Y DIBUJARLOS EN LA PANTALLA
+function drawCard() {
+  fetch('http://localhost:3000/videos')
+  .then(function(response) {
+    return response.json();
+  }).then(function(videos){
+    if(videos[0]) { // Check if there are videos
+      videoListSection.classList.add('active');
+      videos.forEach(video => {
+        insertCard(createCard(video))
+      });
+    } else {
+      videoListSection.classList.remove('active');
+      console.log('No videos')
+    }
   });
-});
+}
 
 function createCard(video) {
   const {title, url_video, description} = video;
@@ -83,4 +99,4 @@ function createCard(video) {
 function insertCard(card) {
   const container = document.getElementById('videos');
   container.appendChild(card);
-}*/
+}
