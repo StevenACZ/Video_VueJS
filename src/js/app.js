@@ -1,36 +1,36 @@
-/*const videoList = document.getElementById('js_video_list');
+const videoListSection = document.getElementById('js_video_list');
+videoListSection.classList.add('active');
 
-const addVideoButton = document.getElementById('js_btnAddVideoButton')
-const addVideoForm = document.getElementById('js_addVideoForm')
+const addVideoSection = document.getElementById('js_addVideoForm')
+const openAddVideoSection = document.getElementById('js_btnAddVideoButton')
 
-addVideoForm.style.display = 'none';
 
-addVideoButton.addEventListener('click', function() {
-  videoList.style.display = 'none';
-  addVideoForm.style.display = 'block';
+openAddVideoSection.addEventListener('click', function() {
+  videoListSection.classList.remove('active'); // VideoListSection se oculta
+  addVideoSection.classList.add('active') // addVideoSection se dibuja
 
   addVideoClose = document.getElementById('js_btnCancelVideo')
 
-  addVideoForm.addEventListener('submit', function(event) {
+  addVideoSection.addEventListener('submit', function(event) {
     event.preventDefault();
 
-    const title = addVideoForm.querySelector(".title")
-    const url_video = addVideoForm.querySelector('.url-video')
-    const description = addVideoForm.querySelector('.description')
+    const title = addVideoSection.querySelector(".title")
+    const url_video = addVideoSection.querySelector('.url-video')
+    const description = addVideoSection.querySelector('.description')
 
     console.log(title.value)
     console.log(url_video.value)
     console.log(description.value)
 
-    addVideoForm.style.display = 'none';
-    videoList.style.display = 'block';
+    addVideoSection.classList.remove('active')
+    videoListSection.classList.add('active');
   });
 
   addVideoClose.addEventListener('click', function() {
-    addVideoForm.style.display = 'none';
-    videoList.style.display = 'block';
+    addVideoSection.classList.remove('active')
+    videoListSection.classList.add('active');
   });
-});*/
+});
 
 
 
