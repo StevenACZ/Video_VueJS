@@ -28,6 +28,8 @@ openAddVideoSection.addEventListener('click', function() {
     console.log(url_video.value)
     console.log(description.value)
 
+    sendVideo(title, url_video, description);
+
     addVideoSection.classList.remove('active')
     videoListSection.classList.add('active');
   });
@@ -40,16 +42,24 @@ openAddVideoSection.addEventListener('click', function() {
   });
 });
 
-
-
-
-
-
-/*const addVideoForm = document.getElementById("js_addVideoForm");
-const title = addVideoForm.querySelector(".title")
-const url_video = addVideoForm.querySelector('.url-video')
-const description = addVideoForm.querySelector('.description')*/
-
+// OBTENER DATOS DEL FORMULARIO ADD VIDEO Y ENVIARLO AL API
+function sendVideo(title, url_video, description) {
+  fetch('http://localhost:3000/videos', {
+    method: 'POST',
+    body: JSON.stringify({
+      title: title.value,
+      url_video: url_video.value,
+      description: description.value
+    }),
+    headers: {
+      "Content-type": "application/json; charset=UTF-8"
+    }
+  }).then(function(response) {
+    return response.json()
+  }).then(function(videoCreated) {
+    console.log(videoCreated)
+  })
+};
 
 // OBTENER DATOS DEL API Y DIBUJARLOS EN LA PANTALLA
 function drawCard() {
@@ -67,7 +77,7 @@ function drawCard() {
       console.log('No videos')
     }
   });
-}
+};
 
 function createCard(video) {
   const {title, url_video, description} = video;
@@ -94,9 +104,9 @@ function createCard(video) {
   `
 
   return card;
-}
+};
 
 function insertCard(card) {
   const container = document.getElementById('videos');
   container.appendChild(card);
-}
+};
