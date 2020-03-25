@@ -15,88 +15,93 @@
 </head>
 <body>
   
-  <header class="header">
-    <h1 class="header__title">Video Tv</h1>
-    <button class="btn btn--primary" id="js_btnAddVideoButton">Agregar video</button>
-  </header>
+  <div id="app">
+    <header class="header">
+      <h1 class="header__title">Video Tv {{openAddVideoSection}} </h1>
+      <button class="btn btn--primary" @click="toggleOpenAddVideoSection">Agregar video</button>
+    </header>
 
-  <main class="main">
-
-    <!--<section class="detail">
-      <h2 class="detail__title">Tecnicas de programación</h2>
-
-      <figure class="detail__video-container">
-        <img class="detail__video" src="https://picsum.photos/200/300
-        " alt="Img">
-      </figure>
-
-      <div class="detail__detail-container">
-        <h3 class="detail__sub-title">Tecnicas de programación</h3>
-        <p class="detail__views">0 visualizaciones</p>
-
-        <p class="detail__description">
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Exercitationem quae fugit sunt dolor aperiam, numquam unde vero temporibus at quas quasi molestiae aut voluptates quos est ullam placeat voluptas neque.
-        </p>
-
-      </div>
-    </section>-->
-
-    <!--<section class="modal-eliminate-video" id="js_modalEliminateVideo">
-      <div class="modal-eliminate-video__header">
-        <h2 class="modal-eliminate-video__title">Eliminar video</h2>
-        <span class="modal-eliminate-video__close">X</span>
-      </div>
-
-      <div class="modal-eliminate-video__body">
-        <p class="modal-eliminate-video__message">¿Estas seguro que quieres eliminar este video?</p>
-        <div class="modal-eliminate-video__options">
-          <button class="btn btn--primary">Eliminar</button>
-          <button class="btn btn--secondary">Cancelar</button>
+    <section class="main">
+    
+      <!--<section class="detail">
+        <h2 class="detail__title">Tecnicas de programación</h2>
+  
+        <figure class="detail__video-container">
+          <img class="detail__video" src="https://picsum.photos/200/300
+          " alt="Img">
+        </figure>
+  
+        <div class="detail__detail-container">
+          <h3 class="detail__sub-title">Tecnicas de programación</h3>
+          <p class="detail__views">0 visualizaciones</p>
+  
+          <p class="detail__description">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Exercitationem quae fugit sunt dolor aperiam, numquam unde vero temporibus at quas quasi molestiae aut voluptates quos est ullam placeat voluptas neque.
+          </p>
+  
         </div>
-      </div>
-    </section>-->
-
-    <section class="list-videos" id="js_video_list">
-      <h2 class="list-videos__title">Lista de videos</h2>
-
-      <div class="list-videos__videos" id="videos">
-        
-      </div>
+      </section>-->
+  
+      <!--<section class="modal-eliminate-video" id="js_modalEliminateVideo">
+        <div class="modal-eliminate-video__header">
+          <h2 class="modal-eliminate-video__title">Eliminar video</h2>
+          <span class="modal-eliminate-video__close">X</span>
+        </div>
+  
+        <div class="modal-eliminate-video__body">
+          <p class="modal-eliminate-video__message">¿Estas seguro que quieres eliminar este video?</p>
+          <div class="modal-eliminate-video__options">
+            <button class="btn btn--primary">Eliminar</button>
+            <button class="btn btn--secondary">Cancelar</button>
+          </div>
+        </div>
+      </section>-->
+  
+      <section class="list-videos" :class="{ active : !openAddVideoSection }"> 
+        <h2 class="list-videos__title">Lista de videos</h2>
+  
+        <div class="list-videos__videos" id="videos">
+          {{ getVideos() }}
+        </div>
+      </section>
+  
+      <section class="add-video" :class="{ active : openAddVideoSection}">
+        <h2 class="add-video__title">Agregar video</h2>
+  
+        <form class="add-video__form">
+          <input class="add-video__input title" required type="text" name="title" placeholder="Titulo" v-model="title">
+          <input class="add-video__input url-video" required type="text" name="url-video" placeholder="url-video" v-model="url_video">
+  
+          <textarea class="add-video__input description" required name="description" cols="30" rows="10" placeholder="Descripción" v-model="description"></textarea>
+  
+          <button class="btn btn--primary">Agregar</button>
+          <div class="btn btn--secondary" @click="toggleOpenAddVideoSection">Cancelar</div>
+        </form>
+      </section>
+  
+      <!--<section class="edit-video">
+        <h2 class="edit-video__title">Editar video</h2>
+  
+        <form class="edit-video__form">
+          <input class="edit-video__input title" required type="text" name="title" placeholder="Titulo">
+          <input class="edit-video__input url-video" required type="text" name="url-video" placeholder="url-video">
+  
+          <textarea class="edit-video__input description" required name="description" cols="30" rows="10" placeholder="Descripción"></textarea>
+  
+          <button class="btn btn--primary" id="js_btnEditVideo">Guardar</button>
+          <button class="btn btn--secondary" id="js_btnCancelVideo">Cancelar</button>
+        </form>
+      </section>-->
+  
+      <!--<button class="btn btn--primary" id="js_btnOpenAddVideo">Agregar video</button>-->
+  
+  
     </section>
-
-    <section class="add-video" id="js_addVideoForm">
-      <h2 class="add-video__title">Agregar video</h2>
-
-      <form class="add-video__form">
-        <input class="add-video__input title" required type="text" name="title" placeholder="Titulo">
-        <input class="add-video__input url-video" required type="text" name="url-video" placeholder="url-video">
-
-        <textarea class="add-video__input description" required name="description" cols="30" rows="10" placeholder="Descripción"></textarea>
-
-        <button class="btn btn--primary" id="js_btnAddVideo">Agregar</button>
-        <div class="btn btn--secondary" id="js_btnCancelVideo">Cancelar</div>
-      </form>
-    </section>
-
-    <!--<section class="edit-video">
-      <h2 class="edit-video__title">Editar video</h2>
-
-      <form class="edit-video__form">
-        <input class="edit-video__input title" required type="text" name="title" placeholder="Titulo">
-        <input class="edit-video__input url-video" required type="text" name="url-video" placeholder="url-video">
-
-        <textarea class="edit-video__input description" required name="description" cols="30" rows="10" placeholder="Descripción"></textarea>
-
-        <button class="btn btn--primary" id="js_btnEditVideo">Guardar</button>
-        <button class="btn btn--secondary" id="js_btnCancelVideo">Cancelar</button>
-      </form>
-    </section>-->
-
-    <!--<button class="btn btn--primary" id="js_btnOpenAddVideo">Agregar video</button>-->
+  </div>
 
 
-  </main>
-
+  
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
   <script src="./src/js/app.js"></script>
 </body>
 </html>

@@ -1,8 +1,8 @@
-// videos's container
+/*// videos's container
 const videoListSection = document.getElementById('js_video_list');
 videoListSection.classList.add('active');
 
-drawCard(); // Check if there are videos
+drawCard()
 
 // section where we going to add videos
 const addVideoSection = document.getElementById('js_addVideoForm')
@@ -24,10 +24,6 @@ openAddVideoSection.addEventListener('click', function() {
     const url_video = addVideoSection.querySelector('.url-video')
     const description = addVideoSection.querySelector('.description')
 
-    console.log(title.value)
-    console.log(url_video.value)
-    console.log(description.value)
-
     sendVideo(title, url_video, description);
 
     addVideoSection.classList.remove('active')
@@ -38,6 +34,7 @@ openAddVideoSection.addEventListener('click', function() {
     addVideoSection.classList.remove('active')
     videoListSection.classList.add('active');
 
+    clearVideoList();
     drawCard();
   });
 });
@@ -79,6 +76,12 @@ function drawCard() {
   });
 };
 
+function clearVideoList() {
+  while(videoListSection.hasChildNodes()) {
+    videoListSection.removeChild();
+  }
+}
+
 function createCard(video) {
   const {title, url_video, description} = video;
   const card = document.createElement('article');
@@ -110,3 +113,78 @@ function insertCard(card) {
   const container = document.getElementById('videos');
   container.appendChild(card);
 };
+*/
+
+
+let vue = new Vue({
+  el: "#app",
+  data: {
+    title: '',
+    url_video: '',
+    description: '',
+
+    openAddVideoSection: false,
+  },
+  methods: {
+    toggleOpenAddVideoSection() {
+      this.openAddVideoSection = !this.openAddVideoSection
+    },
+    getVideos() {
+      fetch('http://localhost:3000/videos')
+      .then((response) => {
+        return response.json();
+      }).then((videos) => {
+        videos.forEach(video => {
+          this.insertCard(this.createCard(video));
+        });
+      })
+    },
+    createCard(video) {
+      const {title, url_video, description} = video;
+      const card = document.createElement('article');
+      card.classList.add('card-video');
+    
+      card.innerHTML = `
+      <figure class="card-video__preview-container">
+        <button class="card-video__edit" id="js_editVideo"><i class="fas fa-pencil-alt"></i></button>
+        <button class="card-video__delete" id="js_deleteVideo"><i class="fas fa-times"></i></button>
+        <img class="card-video__preview" src="${url_video}" alt="Img">
+      </figure>
+    
+      <div class="card-video__container-detail">
+        <h3 class="card-video__sub-title">${title}</h3>
+        <p class="card-video__views">0 visualizaciones</p>
+    
+        <p class="card-video__description">
+          ${description}
+        </p>
+    
+        <button class="btn btn--detail" id="js_btnViewDetail">Ver detalle</button>
+      </div>
+      `
+    
+      return card;
+    },
+    insertCard(card) {
+      const container = document.getElementById('videos');
+      container.appendChild(card);
+    },
+    submitVideo(title, url_video, description) {
+      fetch('http://localhost:3000/videos', {
+        method: 'POST',
+        body: JSON.stringify({
+          title: title.value,
+          url_video: url_video.value,
+          description: description.value
+        }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8"
+        }
+      }).then(function(response) {
+        return response.json()
+      }).then(function(videoCreated) {
+        console.log(videoCreated)
+      })
+    }
+  }
+})

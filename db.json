@@ -11,18 +11,6 @@
       "title": "Hola soy otro video 2",
       "url_video": "https://picsum.photos/200/300",
       "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Exercitationem quae fugit sunt dolor aperiam, numquam unde vero temporibus at quas quasi molestiae aut voluptates quos est ullam placeat voluptas neque."
-    },
-    {
-      "title": "asd",
-      "url_video": "sdasda",
-      "description": "dsad",
-      "id": 3
-    },
-    {
-      "title": "asdasdasdasd",
-      "url_video": "sdasda",
-      "description": "asdasdasdasd",
-      "id": 4
     }
   ]
 }
