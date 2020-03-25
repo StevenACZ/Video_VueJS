@@ -10,8 +10,13 @@ let vue = new Vue({
     editDescription: '',
     editId: 0,
 
+    detailTitle: '',
+    detailUrl_video: '',
+    detailDescription: '',
+
     openAddVideoSection: false,
-    openEditVideoSection: false
+    openEditVideoSection: false,
+    openDetailVideoSection: true
   },
   methods: {
     toggleOpenAddVideoSection() {
@@ -19,6 +24,9 @@ let vue = new Vue({
     },
     toggleOpenEditVideoSection() {
       this.openEditVideoSection = !this.openEditVideoSection
+    },
+    toggleOpenDetailVideoSection() {
+      this.openDetailVideoSection = !this.openDetailVideoSection
     },
     getVideos() {
       fetch('http://localhost:3000/videos')
@@ -50,7 +58,7 @@ let vue = new Vue({
           ${description}
         </p>
     
-        <button class="btn btn--detail">Ver detalle</button>
+        <button class="btn btn--detail js_btnDetail">Ver detalle</button>
       </div>
       `
     
@@ -62,6 +70,14 @@ let vue = new Vue({
       card.querySelector(".js_deleteVideo").onclick = () => {
         this.deleteVideo(video);
       };
+
+      card.querySelector(".js_btnDetail").onclick = () => {
+        this.toggleOpenDetailVideoSection()
+        this.detailTitle = video.title;
+        this.detailUrl_video = video.url_video;
+        this.detailDescription = video.description;
+        this.removeAllChilds()
+      }
 
       return card;
     },
@@ -113,6 +129,12 @@ let vue = new Vue({
       fetch(`http://localhost:3000/videos/${video.id}`, {
         method: 'DELETE'
       })
-    }
+    },
+    /*removeAllChilds() {
+      let a = document.querySelector(".detail__detail-container");
+      while(a.hasChildNodes()) {
+        a.removeChild(a.firstChild);	
+      }
+    }*/
   }
 })
