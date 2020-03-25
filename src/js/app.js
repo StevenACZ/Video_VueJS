@@ -60,7 +60,7 @@ let vue = new Vue({
       };
       
       card.querySelector(".js_deleteVideo").onclick = () => {
-        console.log('user ', video);
+        this.deleteVideo(video);
       };
 
       return card;
@@ -107,6 +107,11 @@ let vue = new Vue({
         return response.json()
       }).then(function(videoEdited) {
         console.log(videoEdited)
+      })
+    },
+    deleteVideo(video) {
+      fetch(`http://localhost:3000/videos/${video.id}`, {
+        method: 'DELETE'
       })
     }
   }
