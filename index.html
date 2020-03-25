@@ -68,14 +68,16 @@
       <section class="add-video" :class="{ active : openAddVideoSection}">
         <h2 class="add-video__title">Agregar video</h2>
   
-        <form class="add-video__form">
-          <input class="add-video__input title" required type="text" name="title" placeholder="Titulo" v-model="title">
-          <input class="add-video__input url-video" required type="text" name="url-video" placeholder="url-video" v-model="url_video">
+        <form class="add-video__form" @submit.prevent="submitVideo">
+          <input class="add-video__input title" required type="text" name="title" placeholder="Titulo" v-model.text="title">
+          <input class="add-video__input url-video" required type="text" name="url-video" placeholder="url-video" v-model.text="url_video">
   
-          <textarea class="add-video__input description" required name="description" cols="30" rows="10" placeholder="Descripción" v-model="description"></textarea>
+          <textarea class="add-video__input description" required name="description" cols="30" rows="10" placeholder="Descripción" v-model.text="description"></textarea>
   
-          <button class="btn btn--primary">Agregar</button>
-          <div class="btn btn--secondary" @click="toggleOpenAddVideoSection">Cancelar</div>
+          <button class="btn btn--primary" type="submit">Agregar</button>
+          <a href="./index.html">
+            <div class="btn btn--secondary">Cancelar</div>
+          </a>
         </form>
       </section>
   
