@@ -5,11 +5,19 @@ let vue = new Vue({
     url_video: '',
     description: '',
 
+    editTitle: '',
+    editUrl_video: '',
+    editDescription: '',
+
     openAddVideoSection: false,
+    openEditVideoSection: false
   },
   methods: {
     toggleOpenAddVideoSection() {
       this.openAddVideoSection = !this.openAddVideoSection
+    },
+    toggleOpenEditVideoSection() {
+      this.openEditVideoSection = !this.openEditVideoSection
     },
     getVideos() {
       fetch('http://localhost:3000/videos')
@@ -28,8 +36,8 @@ let vue = new Vue({
     
       card.innerHTML = `
       <figure class="card-video__preview-container">
-        <button class="card-video__edit" id="js_editVideo"><i class="fas fa-pencil-alt"></i></button>
-        <button class="card-video__delete" id="js_deleteVideo"><i class="fas fa-times"></i></button>
+        <button class="card-video__edit js_editVideo"><i class="fas fa-pencil-alt"></i></button>
+        <button class="card-video__delete js_deleteVideo"><i class="fas fa-times"></i></button>
         <img class="card-video__preview" src="${url_video}" alt="Img">
       </figure>
     
@@ -41,14 +49,23 @@ let vue = new Vue({
           ${description}
         </p>
     
-        <button class="btn btn--detail" id="js_btnViewDetail">Ver detalle</button>
+        <button class="btn btn--detail">Ver detalle</button>
       </div>
       `
     
+      card.querySelector(".js_editVideo").onclick = () => {
+        this.editVideo(video)
+        this.toggleOpenEditVideoSection()
+      };
+      
+      card.querySelector(".js_deleteVideo").onclick = () => {
+        console.log('user ', video);
+      };
+
       return card;
     },
     insertCard(card) {
-      const container = document.getElementById('videos');
+      const container = document.querySelector('.videos');
       container.appendChild(card);
     },
     submitVideo() {
@@ -67,6 +84,11 @@ let vue = new Vue({
       }).then(function(videoCreated) {
         console.log(videoCreated)
       })
+    },
+    editVideo(video) {
+      this.editTitle = video.title;
+      this.editUrl_video = video.description;
+      this.editDescription = video.description;
     }
   }
 })

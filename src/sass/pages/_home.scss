@@ -11,8 +11,6 @@
 
 // VIDEO LIST
 .list-videos {
-  display: none;
-
   width: 100%;
   height: 100%;
 
@@ -29,15 +27,10 @@
     margin-bottom: 3rem;
     font-size: 2.8rem;
   }
-
-  &.active {
-    display: block;
-  }
 }
 
 // ADD-VIDEO
 .add-video {
-  display: none;
 
   &__title {
     margin-bottom: 2rem;
@@ -77,9 +70,5 @@
 
   &__input:focus {
     border: 1px solid #00C1AA;
-  }
-
-  &.active {
-    display: block;
   }
 }

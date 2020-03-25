@@ -17,7 +17,7 @@
   
   <div id="app">
     <header class="header">
-      <h1 class="header__title">Video Tv {{openAddVideoSection}} </h1>
+      <h1 class="header__title">Video Tv {{openEditVideoSection}} </h1>
       <button class="btn btn--primary" @click="toggleOpenAddVideoSection">Agregar video</button>
     </header>
 
@@ -57,15 +57,15 @@
         </div>
       </section>-->
   
-      <section class="list-videos" :class="{ active : !openAddVideoSection }"> 
+      <section class="list-videos" v-if="(!openAddVideoSection && !openEditVideoSection)"> 
         <h2 class="list-videos__title">Lista de videos</h2>
   
-        <div class="list-videos__videos" id="videos">
+        <div class="list-videos__videos videos">
           {{ getVideos() }}
         </div>
       </section>
   
-      <section class="add-video" :class="{ active : openAddVideoSection}">
+      <section class="add-video" v-if="openAddVideoSection">
         <h2 class="add-video__title">Agregar video</h2>
   
         <form class="add-video__form" @submit.prevent="submitVideo">
@@ -81,19 +81,21 @@
         </form>
       </section>
   
-      <!--<section class="edit-video">
+      <section class="edit-video" v-if="openEditVideoSection">
         <h2 class="edit-video__title">Editar video</h2>
   
         <form class="edit-video__form">
-          <input class="edit-video__input title" required type="text" name="title" placeholder="Titulo">
-          <input class="edit-video__input url-video" required type="text" name="url-video" placeholder="url-video">
+          <input class="edit-video__input title" required type="text" name="title" placeholder="Titulo" v-model="editTitle">
+          <input class="edit-video__input url-video" required type="text" name="url-video" placeholder="url-video" v-model="editUrl_video">
   
-          <textarea class="edit-video__input description" required name="description" cols="30" rows="10" placeholder="Descripción"></textarea>
+          <textarea class="edit-video__input description" required name="description" cols="30" rows="10" placeholder="Descripción" v-model="editDescription"></textarea>
   
-          <button class="btn btn--primary" id="js_btnEditVideo">Guardar</button>
-          <button class="btn btn--secondary" id="js_btnCancelVideo">Cancelar</button>
+          <button class="btn btn--primary" type="submit">Guardar</button>
+          <a href="./index.html">
+            <div class="btn btn--secondary">Cancelar</div>
+          </a>
         </form>
-      </section>-->
+      </section>
   
       <!--<button class="btn btn--primary" id="js_btnOpenAddVideo">Agregar video</button>-->
   
