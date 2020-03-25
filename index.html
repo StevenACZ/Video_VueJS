@@ -17,7 +17,7 @@
   
   <div id="app">
     <header class="header">
-      <h1 class="header__title">Video Tv {{openEditVideoSection}} </h1>
+      <h1 class="header__title">Video Tv</h1>
       <button class="btn btn--primary" @click="toggleOpenAddVideoSection">Agregar video</button>
     </header>
 
@@ -84,7 +84,7 @@
       <section class="edit-video" v-if="openEditVideoSection">
         <h2 class="edit-video__title">Editar video</h2>
   
-        <form class="edit-video__form">
+        <form class="edit-video__form" @submit.prevent="submitEditVideo">
           <input class="edit-video__input title" required type="text" name="title" placeholder="Titulo" v-model="editTitle">
           <input class="edit-video__input url-video" required type="text" name="url-video" placeholder="url-video" v-model="editUrl_video">
   

@@ -8,6 +8,7 @@ let vue = new Vue({
     editTitle: '',
     editUrl_video: '',
     editDescription: '',
+    editId: 0,
 
     openAddVideoSection: false,
     openEditVideoSection: false
@@ -30,7 +31,7 @@ let vue = new Vue({
       })
     },
     createCard(video) {
-      const {title, url_video, description} = video;
+      const {title, url_video, description, id} = video;
       const card = document.createElement('article');
       card.classList.add('card-video');
     
@@ -43,7 +44,7 @@ let vue = new Vue({
     
       <div class="card-video__container-detail">
         <h3 class="card-video__sub-title">${title}</h3>
-        <p class="card-video__views">0 visualizaciones</p>
+        <p class="card-video__views">${id} visualizaciones</p>
     
         <p class="card-video__description">
           ${description}
@@ -87,8 +88,26 @@ let vue = new Vue({
     },
     editVideo(video) {
       this.editTitle = video.title;
-      this.editUrl_video = video.description;
+      this.editUrl_video = video.url_video;
       this.editDescription = video.description;
+      this.editId = video.id;
+    },
+    submitEditVideo() {
+      fetch(`http://localhost:3000/videos/${this.editId}`, {
+        method: 'PUT',
+        body: JSON.stringify({
+          title: this.editTitle,
+          url_video: this.editUrl_video,
+          description: this.editDescription
+        }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8"
+        }
+      }).then(function(response) {
+        return response.json()
+      }).then(function(videoEdited) {
+        console.log(videoEdited)
+      })
     }
   }
 })
